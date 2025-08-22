@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorando los efectos del vapeo en los jóvenes: riesgos y consecuencias a largo plazo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #105294;
+            --secondary-color: #db3434;
+            --accent-color: #db3434;
+            --light-color: #ecf0f196;
+            --dark-color: #105294;
+            --text-color: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            background-color: var(--primary-color);
+            padding: 0.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(16, 82, 148, 0.8), rgba(16, 82, 148, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%232c3e50" opacity="0.1"/></svg>');
+            background-size: cover;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            color: white;
+        }
+        
+        .hero h1 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: rgb(255, 255, 255);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .section {
+            background-color: white;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--light-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .section h2 i {
+            margin-right: 0.8rem;
+        }
+        
+        .section h3 {
+            color: var(--primary-color);
+            margin: 1.8rem 0 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section h3 i {
+            margin-right: 0.6rem;
+            color: var(--accent-color);
+        }
+        
+        .consequences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.8rem;
+        }
+        
+        .consequence-card {
+            background-color: var(--light-color);
+            padding: 1.8rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+            transition: transform 0.3s;
+        }
+        
+        .consequence-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.8rem;
+        }
+        
+        .impact-card {
+            padding: 1.8rem;
+            border-radius: 8px;
+            color: white;
+            transition: transform 0.3s;
+        }
+        
+        .impact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .impact-card.physical {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .impact-card.mental {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+        
+        .impact-card.social {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+        
+        .statistics {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 2.5rem 0;
+            text-align: center;
+        }
+        
+        .stat {
+            padding: 1.8rem;
+            margin: 1rem;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            min-width: 220px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 2.5rem;
+        }
+        
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin: 1.8rem 0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .warning i {
+            color: #ffc107;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+        
+        .history-timeline {
+            margin: 2rem 0;
+            padding-left: 2rem;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .history-event {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .history-event:before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            left: -2.4rem;
+            top: 0.3rem;
+        }
+        
+        .history-event h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .history-event .year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .consequences-grid, .impact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .statistics {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-ban"></i> Explorando los efectos del vapeo en los jóvenes: Riesgos y consecuencias a largo plazo</h1>
+        <p>Información sobre los riesgos y efectos del consumo de cigarrillos electrónicos</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a></li>
+            <li><a href="#causas"><i class="fas fa-search"></i> Causas</a></li>
+            <li><a href="#razones"><i class="fas fa-question-circle"></i> Razones de Consumo</a></li>
+            <li><a href="#origen"><i class="fas fa-history"></i> Origen del Vapeo</a></li>
+            <li><a href="#impacto"><i class="fas fa-users"></i> Impacto en Jóvenes</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>Los Peligros Ocultos del Vapeo</h1>
+            <p>El vapeo se ha popularizado rápidamente, especialmente entre jóvenes, pero detrás de los sabores atractivos y la imagen moderna se esconden graves riesgos para la salud.</p>
+            <a href="#consecuencias" class="btn">Conoce los riesgos</a>
+        </div>
+        
+        <section id="consecuencias" class="section">
+            <h2><i class="fas fa-exclamation-triangle"></i> Consecuencias del Vapeo</h2>
+            <p>El consumo de cigarrillos electrónicos puede tener serias consecuencias para la salud, muchas de las cuales aún se están investigando.</p>
+            
+            <div class="consequences-grid">
+                <div class="consequence-card">
+                    <h3><i class="fas fa-lungs"></i> Problemas Respiratorios</h3>
+                    <p>El vapeo puede causar irritación de las vías respiratorias, tos crónica, bronquitis y empeorar el asma. En casos severos, puede provocar daño pulmonar irreversible.</p>
+                </div>
+                
+                <div class="consequence-card">
+                    <h3><i class="fas fa-heart"></i> Enfermedades Cardiovasculares</h3>
+                    <p>La nicotina presente en la mayoría de los líquidos para vapear aumenta la presión arterial y la frecuencia cardíaca, elevando el riesgo de ataques cardíacos.</p>
+                </div>
+                
+                <div class="consequence-card">
+                    <h3><i class="fas fa-pills"></i> Adicción a la Nicotina</h3>
+                    <p>Muchos líquidos para vapear contienen nicotina, una sustancia altamente adictiva que crea dependencia y dificulta dejar el consumo.</p>
+                </div>
+                
+                <div class="consequence-card">
+                    <h3><i class="fas fa-radiation"></i> Exposición a Sustancias Tóxicas</h3>
+                    <p>Los aerosoles del vapeo contienen sustancias químicas nocivas como formaldehído, acetaldehído y acroleína, conocidas por sus efectos cancerígenos.</p>
+                </div>
+            </div>
+            
+            <div class="warning">
+                <i class="fas fa-exclamation-circle"></i>
+                <div>
+                    <h3>EVALI: Enfermedad Pulmonar Asociada al Vapeo</h3>
+                    <p>En 2019, se identificó un brote de lesión pulmonar asociada al uso de cigarrillos electrónicos o vapeo (EVALI por sus siglas en inglés), que resultó en hospitalizaciones y muertes.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="causas" class="section">
+            <h2><i class="fas fa-search"></i> Causas del Vapeo</h2>
+            <p>El aumento en el consumo de cigarrillos electrónicos tiene múltiples causas interrelacionadas:</p>
+            
+            <h3><i class="fas fa-ad"></i> Marketing Agresivo</h3>
+            <p>Las empresas de vapeo han dirigido su publicidad hacia jóvenes, utilizando sabores atractivos, diseño moderno y campañas en redes sociales.</p>
+            
+            <h3><i class="fas fa-info-circle"></i> Percepción de Menor Riesgo</h3>
+            <p>Muchas personas, especialmente jóvenes, creen que el vapeo es menos dañino que los cigarrillos tradicionales, una idea promovida por la industria.</p>
+            
+            <h3><i class="fas fa-store"></i> Accesibilidad y Disponibilidad</h3>
+            <p>A pesar de las regulaciones, los dispositivos de vapeo siguen siendo relativamente fáciles de obtener, especialmente a través de internet.</p>
+            
+            <h3><i class="fas fa-globe"></i> Normalización Social</h3>
+            <p>El consumo visible de cigarrillos electrónicos en espacios públicos y en medios de comunicación contribuye a su normalización.</p>
+        </section>
+        
+        <section id="razones" class="section">
+            <h2><i class="fas fa-question-circle"></i> Razones de Consumo</h2>
+            <p>Las personas, especialmente los jóvenes, comienzan a vapear por diversas razones:</p>
+            
+            <div class="statistics">
+                <div class="stat">
+                    <div class="stat-number">Curiosidad por los sabores</div>
+                    <div class="stat-desc">La amplia variedad de sabores atractivos actúa como un poderoso imán para jóvenes y adolescentes.</div>
+                </div>
+                
+                <div class="stat">
+                    <div class="stat-number">Influencia de amigos</div>
+                    <div class="stat-desc">El deseo de integrarse socialmente, evitar el rechazo o ser percibido como "aburrido" lleva a muchos a experimentar con estos dispositivos, incluso contra sus propios valores iniciales.</div>
+                </div>
+                
+                <div class="stat">
+                    <div class="stat-number">Creencia de que es menos dañino</div>
+                    <div class="stat-desc">Esta percepción errónea, alimentada por estrategias de marketing de la industria y mitos populares, lleva a muchas personas a iniciarse en el vapeo sin comprender los riesgos reales.</div>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-user-friends"></i> Presión Social</h3>
+            <p>El deseo de encajar en un grupo o sentirse aceptado es una poderosa razón para que los jóvenes experimenten con el vapeo.</p>
+            
+            <h3><i class="fas fa-ice-cream"></i> Sabores Atractivos</h3>
+            <p>La amplia variedad de sabores dulces y frutales hace que los cigarrillos electrónicos resulten atractivos para paladares jóvenes.</p>
+            
+            <h3><i class="fas fa-stress-ball"></i> Estrés y Ansiedad</h3>
+            <p>Algunos jóvenes utilizan el vapeo como mecanismo para afrontar el estrés o la ansiedad, aunque esto puede llevar a dependencia.</p>
+        </section>
+        
+        <section id="origen" class="section">
+            <h2><i class="fas fa-history"></i> ¿De Dónde Salió el Vapeo?</h2>
+            <p>Los cigarrillos electrónicos tienen una historia más larga de lo que muchos suponen:</p>
+            
+            <div class="history-timeline">
+                <div class="history-event">
+                    <h4>Primeras Patentes</h4>
+                    <p class="year">1960s</p>
+                    <p>La idea de un dispositivo electrónico para vaporizar nicotina existe desde la década de 1960, pero no fue comercialmente viable en ese momento.</p>
+                </div>
+                
+                <div class="history-event">
+                    <h4>Invento Moderno</h4>
+                    <p class="year">2003</p>
+                    <p>El farmacéutico chino Hon Lik desarrolló el primer cigarrillo electrónico moderno después de que su padre muriera de cáncer de pulmón relacionado con el tabaquismo.</p>
+                </div>
+                
+                <div class="history-event">
+                    <h4>Expansión Global</h4>
+                    <p class="year">2006-2007</p>
+                    <p>Los dispositivos llegaron al mercado europeo y estadounidense, inicialmente como alternativa para dejar de fumar.</p>
+                </div>
+                
+                <div class="history-event">
+                    <h4>Evolución y Controversia</h4>
+                    <p class="year">2010-actualidad</p>
+                    <p>Los dispositivos evolucionaron a sistemas más avanzados con mayor capacidad de vapor, llevando a diferentes países a implementar regulaciones debido a preocupaciones de seguridad.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="impacto" class="section">
+            <h2><i class="fas fa-users"></i> Impacto del Vapeo en Jóvenes</h2>
+            <p>El consumo de cigarrillos electrónicos afecta múltiples aspectos del desarrollo juvenil:</p>
+            
+            <div class="impact-grid">
+                <div class="impact-card physical">
+                    <h3><i class="fas fa-running"></i> Salud Física</h3>
+                    <ul>
+                        <li>Desarrollo cerebral afectado por la nicotina</li>
+                        <li>Daño pulmonar en formación</li>
+                        <li>Mayor riesgo de adicción a otras sustancias</li>
+                        <li>Problemas de atención y aprendizaje</li>
+                        <li>Alteraciones del sueño</li>
+                    </ul>
+                </div>
+                
+                <div class="impact-card mental">
+                    <h3><i class="fas fa-brain"></i> Salud Mental</h3>
+                    <ul>
+                        <li>Aumento de ansiedad y depresión</li>
+                        <li>Mayor riesgo de trastornos del estado de ánimo</li>
+                        <li>Deterioro de la capacidad de concentración</li>
+                        <li>Irritabilidad cuando no se consume</li>
+                        <li>Impacto negativo en el autocontrol</li>
+                    </ul>
+                </div>
+                
+                <div class="impact-card social">
+                    <h3><i class="fas fa-handshake"></i> Salud Social</h3>
+                    <ul>
+                        <li>Aislamiento de grupos no consumidores</li>
+                        <li>Presión para mantener el consumo</li>
+                        <li>Problemas económicos por el gasto en dispositivos</li>
+                        <li>Rendimiento académico afectado</li>
+                        <li>Conflictos familiares</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="warning">
+                <i class="fas fa-exclamation-circle"></i>
+                <div>
+                    <h3>El Cerebro Adolescente en Riesgo</h3>
+                    <p>El cerebro continúa desarrollándose hasta los 25 años. La exposición a la nicotina durante este período puede alterar el desarrollo cerebral, afectando la atención, el aprendizaje y el control de impulsos.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>© 2025 - Explorando los efectos del vapeo en los jóvenes: Riesgos y consecuencias a largo plazo</p>
+        <p>Diego Alejandro Tibaquichá Suárez</p>
+        <p>Esta página tiene fines educativos. Si necesitas ayuda para dejar el vapeo, consulta con profesionales de la salud.</p>
+    </footer>
+</body>
+</html>
